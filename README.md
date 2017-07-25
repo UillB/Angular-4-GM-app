@@ -1,2 +1,2 @@
 # Angular-4-GM-app
-Angular 2 app with google maps
+Angular 4 app with google maps
