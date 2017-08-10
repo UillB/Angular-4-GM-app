@@ -16,7 +16,7 @@ var SignUpComponent = (function () {
     }
     SignUpComponent.prototype.ngOnInit = function () {
         this.session = JSON.parse(localStorage.getItem("session"));
-        this.users = JSON.parse(localStorage.getItem("users"));
+        this.users = JSON.parse(localStorage.getItem("users")) || [];
         this.initNewUser();
         if (this.session && this.session.auth) {
             this.router.navigate(['dashboard']);
@@ -35,7 +35,7 @@ var SignUpComponent = (function () {
         this.users.push(this.newUser);
         localStorage.setItem("session", JSON.stringify({ auth: true, email: this.newUser.email }));
         localStorage.setItem("users", JSON.stringify(this.users));
-        // this.router.navigate(['dashboard']);
+        this.router.navigate(['dashboard']);
         console.log(localStorage.getItem("users"));
     };
     return SignUpComponent;

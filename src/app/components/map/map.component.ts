@@ -33,7 +33,7 @@ export class MapComponent implements OnInit {
         lng: 7.895982,
         label: 'C'
       }
-    ]
+    ];
     this.session = JSON.parse(localStorage.getItem("session")) || {};
     this.AuthUser();
   }
@@ -47,12 +47,10 @@ export class MapComponent implements OnInit {
 
   AuthUser(){
     if(this.session && this.session.auth){
-      let users = JSON.parse(localStorage.getItem("users"));
+      let users = JSON.parse(localStorage.getItem('users'));
       for(let i = 0; i < users.length; i++){
-        if(this.session.userEmail === users[i].email){
-          this.user = users[i],
-          this.user.markers = users[i].markers;
-          console.log(this.user);
+        if(users[i].email === this.session.email){
+          this.user = users[i];
         }
       }
     }

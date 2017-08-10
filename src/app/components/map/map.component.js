@@ -47,12 +47,10 @@ var MapComponent = (function () {
     };
     MapComponent.prototype.AuthUser = function () {
         if (this.session && this.session.auth) {
-            var users = JSON.parse(localStorage.getItem("users"));
+            var users = JSON.parse(localStorage.getItem('users'));
             for (var i = 0; i < users.length; i++) {
-                if (this.session.userEmail === users[i].email) {
-                    this.user = users[i],
-                        this.user.markers = users[i].markers;
-                    console.log(this.user);
+                if (users[i].email === this.session.email) {
+                    this.user = users[i];
                 }
             }
         }

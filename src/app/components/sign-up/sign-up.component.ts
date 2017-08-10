@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit {
   constructor(private router: Router){}
   ngOnInit() {
     this.session = JSON.parse(localStorage.getItem("session"));
-    this.users = JSON.parse(localStorage.getItem("users"));
+    this.users = JSON.parse(localStorage.getItem("users")) || [];
     this.initNewUser();
     if(this.session && this.session.auth){
       this.router.navigate(['dashboard']);
@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
     this.users.push(this.newUser);
     localStorage.setItem("session", JSON.stringify({auth: true, email: this.newUser.email}));
     localStorage.setItem("users", JSON.stringify(this.users));
-    // this.router.navigate(['dashboard']);
+    this.router.navigate(['dashboard']);
     console.log(localStorage.getItem("users"));
   }
 }
